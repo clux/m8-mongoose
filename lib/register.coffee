@@ -1,5 +1,13 @@
 fs          = require 'fs'
 utils       = require './utils'
+tempFolder  = __dirname + '/../runtime/'
+
+
+extGoose = [
+  'labels'
+  'label'
+  'private'
+]
 
 # register method used by app
 # this must be snuck in before registering an object with mongoose
