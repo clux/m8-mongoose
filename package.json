@@ -6,7 +6,7 @@
   "repository": {
     "url": ""
   },
-  "main": "index.coffee",
+  "main": "index.js",
   "engines": {
     "node": "~0.4.10"
   },
