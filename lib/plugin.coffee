@@ -12,22 +12,22 @@ read = (file) ->
   fs.readFileSync(file, 'utf8')
 
 # object injected to modul8's interface when calling
-Parser = (@o={}) ->
+Plugin = (@o={}) ->
   @o.key     or= 'models'
   @o.domain  or= 'mongoose'
   return
 
-Parser::data = ->
+Plugin::data = ->
   files = (file for file in fsx.readDirSync(tempFolder).files when path.extname(file) is '.json')
   [@o.key, '{'+('"'+toName(file)+'":'+read(file) for file in files).join(',')+'}']
 
 
-Parser::domain = ->
+Plugin::domain = ->
   [@o.domain, dir+'/domain/'] # put forms code on here
 
 # expose Parser class
-module.exports = Parser
+module.exports = Plugin
 
 
 if module is require.main
-  console.log (new Parser()).data()
+  console.log (new Plugin()).data()
