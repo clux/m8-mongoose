@@ -1,6 +1,6 @@
 {
   "author": "Eirik Albrgitsen <analsandblaster@gmail.com>",
-  "name": "modul8-mongoose",
+  "name": "m8-mongoose",
   "description": "Mongoose plugin for modul8 to get simplified mongoose logic on the client",
   "version": "0.0.1",
   "repository": {

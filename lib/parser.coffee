@@ -22,7 +22,7 @@ Parser::data = ->
   [@o.key, '{'+('"'+toName(file)+'":'+read(file) for file in files).join(',')+'}']
 
 
-Parser::domains = ->
+Parser::domain = ->
   [@o.domain, dir+'/domain/'] # put forms code on here
 
 # expose Parser class
