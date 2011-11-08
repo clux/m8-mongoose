@@ -16,7 +16,12 @@ module.exports = (name, obj) ->
 
   for key,val of cliObj
     delete cliObj[key] if val.private # dont export private properties to the client
-    cliObj[key] = [] if val instanceof Array # assume that document[key] exists somewhere else so that client code can figure it out
+
+    if val instanceof Function
+      cliObj[key] = val.toString()
+    else if val instanceof Array
+      # assume that document[key] exists somewhere else so that client code can figure it out
+      cliObj[key] = []
 
   fs.writeFileSync(tempFolder+name+'.json', JSON.stringify(cliObj))
   sanitizeForMongoose(obj) # mongoose safe version sent back to model

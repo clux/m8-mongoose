@@ -1,10 +1,11 @@
 {
   "author": "Eirik Albrgitsen <analsandblaster@gmail.com>",
   "name": "m8-mongoose",
-  "description": "Mongoose plugin for modul8 to get simplified mongoose logic on the client",
-  "version": "0.0.1",
+  "description": "Mongoose logic on the client for web applications using modul8",
+  "version": "0.1.0",
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "git://github.com/clux/m8-mongoose.git"
   },
   "main": "index.js",
   "engines": {
