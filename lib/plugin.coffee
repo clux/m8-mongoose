@@ -19,7 +19,7 @@ Plugin = (@o={}) ->
 
 Plugin::data = ->
   files = (file for file in fsx.readDirSync(tempFolder).files when path.extname(file) is '.json')
-  [@o.key, '{'+('"'+toName(file)+'":'+read(file) for file in files).join(',')+'}']
+  [@o.key, '{'+('"'+toName(file)+'":'+read(file) for file in files).join(',')+'}', true] # this is pre-serialized
 
 
 Plugin::domain = ->
