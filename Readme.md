@@ -27,7 +27,7 @@ then require the register function, and register a model with it
       pass : {type: String, private: true}
     }));
 
-On deployment, pass it to modul8
+On deployment, let the plugin take care of getting it to modul8
 
     var MongoosePlugin = require('m8-mongoose').Plugin;
     modul8('./client/app.js')
@@ -41,8 +41,8 @@ Optionally, an object can be specified as a second argument to the constructor t
 
 
 ## Behavior
-Calls to `register()` serializes the model to the plugins 'runtime' directory, wheras `MongoosePlugin` will read thes for modul8.
-Code to help auto generate certain form code and validation logic is included on the `mongoose` domain, and will be bundled with the output source if required
+Calls to `register()` serializes the model to the plugins 'runtime' directory, whereas `MongoosePlugin` will read these for modul8.
+Code to help auto generate certain form code and validation logic is (soon) included on the `mongoose` domain, and will be bundled with the output source if required
 by the application.
 
 ## Extensions
