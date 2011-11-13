@@ -31,9 +31,9 @@ User = new Schema(toBrowser('user', {
 }));
 ````
 
-The output Schema instance is mongoose compatible (toBrowser removes extra attributes like `private` above).
+The output Schema instance is mongoose compatible (toBrowser remembers the extra attributes like `private`, but returns an object without these).
 
-On deployment, the plugin will pass back the serialized version of what was passed in above directly to modul8
+On deployment, the plugin will pass back the serialized version of what was passed in above to modul8
 
 ````javascript
 var modul8 = require('modul8')
