@@ -21,18 +21,27 @@ Install with
 
 then require the register function, and register a model with it
 
-    toBrowser = require('m8-mongoose').register;
-    User = new Schema(toBrowser('user', {
-      name : String
-      pass : {type: String, private: true}
-    }));
+````javascript
+var Schema = require('mongoose').Schema;
+var toBrowser = require('m8-mongoose').register;
 
-On deployment, let the plugin take care of getting it to modul8
+User = new Schema(toBrowser('user', {
+  name : String
+  pass : {type: String, private: true}
+}));
+````
 
-    var MongoosePlugin = require('m8-mongoose').Plugin;
-    modul8('./client/app.js')
-      .use(new MongoosePlugin())
-      .compile('./out.js');
+The output Schema instance is mongoose compatible (toBrowser removes extra attributes like `private` above).
+
+On deployment, the plugin will pass back the serialized version of what was passed in above directly to modul8
+
+````javascript
+var modul8 = require('modul8')
+var MongoosePlugin = require('m8-mongoose').Plugin;
+modul8('./client/app.js')
+  .use(new MongoosePlugin())
+  .compile('./out.js');
+````
 
 Optionally, an object can be specified as a second argument to the constructor to tweak the module's behavior. It's keys are:
 
