@@ -2,6 +2,7 @@ path        = require 'path'
 fs          = require 'fs'
 fsx         = require 'fsx'
 dir         = __dirname
+#forms       = require './domain/forms'
 
 tempFolder = dir + '/../runtime/'
 
@@ -13,17 +14,18 @@ read = (file) ->
 
 # object injected to modul8's interface when calling
 Plugin = (@o={}) ->
-  @o.key     or= 'models'
-  @o.domain  or= 'mongoose'
+  @o.name     or= 'mongoose'
   return
 
 Plugin::data = ->
   files = (file for file in fsx.readDirSync(tempFolder).files when path.extname(file) is '.json')
-  [@o.key, '{'+('"'+toName(file)+'":'+read(file) for file in files).join(',')+'}', true] # this is pre-serialized
+  '{'+('"'+toName(file)+'":'+read(file) for file in files).join(',')+'}' # strings by default are assumed to be pre-serialized from plugins
 
+Plugin::name = ->
+  @o.name
 
 Plugin::domain = ->
-  [@o.domain, dir+'/domain/'] # put forms code on here
+  dir+'/domain/' # put forms code on here
 
 # expose Parser class
 module.exports = Plugin
