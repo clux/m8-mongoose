@@ -43,11 +43,8 @@ modul8('./client/app.js')
   .compile('./out.js');
 ````
 
-Optionally, an object can be specified as a second argument to the constructor to tweak the module's behavior. It's keys are:
-
-- `domain` - Domain to export helper code to (defaults to 'mongoose')
-- `key` - Key on the data domain to export the sanitized models to (defaults to 'models')
-
+An optional first parameter to the MongoosePlugin constructor can be set, which will specify the name of the domain and data key used when exporting.
+This parameter defaults to 'mongoose'.
 
 ## Behavior
 Calls to `register()` serializes the model to the plugins 'runtime' directory, whereas `MongoosePlugin` will read these for modul8.
